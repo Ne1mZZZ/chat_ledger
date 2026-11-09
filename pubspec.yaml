@@ -1,0 +1,26 @@
+name: chat_ledger
+description: 一句话记账 - 轻量、纯本地、对话式记账 App
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+# 只装 2 个第三方库：sqflite(本地数据库) + path(拼路径)
+# 故意不装：大模型 SDK、推送、广告、统计、图表库、状态管理库
+# 图表全部自绘，状态用 Flutter 自带 ChangeNotifier，这是"占用小"的关键
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.3.0
+  path: ^1.8.3
+
+dev_dependencies:
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  # V1 不需要任何图片资源：所有图标都是纯代码绘制的圆形色块 + 一个汉字
+  # 若以后要加图片，取消下面注释并把图片放到 assets/images/ 目录
+  # assets:
+  #   - assets/images/
