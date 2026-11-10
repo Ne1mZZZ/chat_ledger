@@ -39,6 +39,19 @@ const Map<String, CategoryStyle> kCategoryStyles = <String, CategoryStyle>{
 CategoryStyle styleOf(String category) =>
     kCategoryStyles[category] ?? kCategoryStyles['其他']!;
 
+/// 悬浮长条圆导航的尺寸：胶囊高度、与屏幕底的最小间距。
+/// 页面底部留白统一用 navReservedHeight() 算，不能写死数字 ——
+/// 不同手机的手势条高度不一样，写死会让输入框和导航叠在一起。
+const double kNavBarHeight = 62;
+const double kNavBottomGap = 12;
+
+double navReservedHeight(BuildContext context) {
+  final double inset = MediaQuery.of(context).padding.bottom;
+  final double bottom = inset > kNavBottomGap ? inset : kNavBottomGap;
+  // 末尾 +12 是内容与导航之间的呼吸空间，避免两块玻璃贴在一起
+  return kNavBarHeight + bottom + 12;
+}
+
 class AppTheme {
   /// 【液态玻璃总开关】低端机如果滑动掉帧，把这里改成 false，
   /// 全 App 会一键降级成纯色扁平卡片（模糊层完全不创建）。

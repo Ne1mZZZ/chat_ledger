@@ -40,10 +40,10 @@ class MainShell extends StatelessWidget {
 
   Widget _buildNav(int current) => SafeArea(
         top: false,
-        minimum: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+        minimum: const EdgeInsets.fromLTRB(20, 0, 20, kNavBottomGap),
         child: GlassBox(
           radius: 30,
-          height: 62,
+          height: kNavBarHeight,
           padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 6),
           opacity: 0.55,
           blur: 22,

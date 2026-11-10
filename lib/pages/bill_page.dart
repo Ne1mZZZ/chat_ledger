@@ -48,8 +48,9 @@ class BillPage extends StatelessWidget {
                         ),
                       )
                     : ListView.builder(
-                        // 底部留 96px，避免最后一条被悬浮长条圆导航盖住
-                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 96),
+                        // 按手机实际底部高度留白，避免最后一条被导航盖住
+                        padding: EdgeInsets.fromLTRB(
+                            16, 0, 16, navReservedHeight(context)),
                         itemCount: groups.length,
                         itemBuilder: (BuildContext ctx, int i) {
                           final String key = groups.keys.elementAt(i);

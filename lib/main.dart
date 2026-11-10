@@ -22,7 +22,7 @@ class ChatLedgerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: '一句话记账',
+        title: '记',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light,
         home: const MainShell(),

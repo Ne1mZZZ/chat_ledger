@@ -37,8 +37,9 @@ class StatsPage extends StatelessWidget {
               monthPoints(s.trendExpenses, s.month);
 
           return SingleChildScrollView(
-            // 底部留 96px，避免最后一组柱子被悬浮长条圆导航盖住
-            padding: const EdgeInsets.fromLTRB(16, 10, 16, 96),
+            // 按手机实际底部高度留白，避免最后一组柱子被导航盖住
+            padding: EdgeInsets.fromLTRB(
+                16, 10, 16, navReservedHeight(context)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[

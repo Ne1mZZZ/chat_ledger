@@ -72,7 +72,8 @@ class ExpenseDb {
         from.millisecondsSinceEpoch,
         to.millisecondsSinceEpoch,
       ],
-      orderBy: 'date DESC',
+      // 同一时间写下的多笔（一句话拆出来的）按插入顺序排，顺序才稳定
+      orderBy: 'date DESC, id ASC',
     );
     return rows.map(Expense.fromMap).toList();
   }
@@ -82,7 +83,8 @@ class ExpenseDb {
     final Database db = await database;
     final List<Map<String, Object?>> rows = await db.query(
       'expenses',
-      orderBy: 'date DESC',
+      // 多笔同分钟写入时 date 相同，用 id 兜底：先记的那笔排前面
+      orderBy: 'date DESC, id ASC',
       limit: limit,
     );
     return rows.map(Expense.fromMap).toList();
